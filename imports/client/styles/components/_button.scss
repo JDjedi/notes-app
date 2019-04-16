@@ -1,0 +1,35 @@
+.button {
+	background-color: $button-bg;
+	border: none;
+	color: $button-color;
+	cursor: pointer; // specify color to be used in button
+	line-height: 1.2;
+	padding: $input-spacing;
+	text-transform: uppercase;
+	font-size: $base-font-size;
+	margin-bottom: $space;
+}
+
+.button--link {
+	display: inline-block; // spacing from other elements outside this elemnent to affect this element
+	text-decoration: none;
+}
+
+.button--header {
+	margin-bottom: 0rem;
+}
+
+.button--pill {
+	background-color: transparent;
+	border: 1px solid $button-pill-color;
+	color: $button-pill-color;
+	margin: 0 ($space / 2) 0 0;
+	padding: .3rem .8rem;
+}
+
+
+.button--secondary {
+	background-color: #f9f9f9;
+	border: 1px solid #dddddd;
+	color: #777777;
+}
