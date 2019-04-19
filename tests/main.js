@@ -1,10 +1,8 @@
 import assert from "assert";
+import './imports/api/users.test.js';
+import './imports/api/notes.test.js';
 
 describe("short-lnk", function () {
-  it("package.json has correct name", async function () {
-    const { name } = await import("../package.json");
-    assert.strictEqual(name, "short-lnk");
-  });
 
   if (Meteor.isClient) {
     it("client is not server", function () {
