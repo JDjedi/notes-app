@@ -5,6 +5,12 @@ import SimpleSchema from 'simpl-schema';
 
 export const Notes = new Mongo.Collection('notes') // this argument names the collection
 
+if (Meteor.isServer) {
+	Meteor.publish('notes', function() {
+		return Notes.find({ userId: this.userId })
+	});
+}
+
 Meteor.methods({
 	'notes.insert'() {
 		if (!this.userId) {
@@ -30,6 +36,44 @@ Meteor.methods({
 		}).validate({_id: _id})
 
 		Notes.remove({ _id: _id})
+	},
+
+	'notes.update'(_id, updates) {
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized')
+		}
+
+		new SimpleSchema({
+			_id: {
+				type: String,
+				min: 1
+			},
+			title: {
+				type: String,
+				optional: true
+			},
+			body: {
+				type: String,
+				optional: true
+			}
+		}).validate({
+			_id: _id,
+			...updates
+		});
+
+		Notes.update(_id, {
+			_id: _id,
+			userId: this.userId,
+			$set: {
+				updatedAt: new Date().getTime(),
+				...updates
+			}
+		})
 	}
 })
+
+
+
+
+
 
