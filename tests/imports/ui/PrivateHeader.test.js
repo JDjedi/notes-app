@@ -3,7 +3,7 @@ import React from 'react';
 import expect from 'expect';
 import { mount } from 'enzyme';
 
-import PrivateHeader from '../../../imports/ui/PrivateHeader';
+import { PrivateHeader } from '../../../imports/ui/PrivateHeader';
 
 if (Meteor.isClient) {
   describe('PrivateHeader', function () {
@@ -14,7 +14,7 @@ if (Meteor.isClient) {
       expect(buttonText).toBe('Logout');
     });
 
-    it('should use title prop as h1 text', function () {
+    it('should use title prop as h3 text', function () {
       const title = 'Test title';
       const wrapper = mount(  <PrivateHeader title="Test title" handleLogout={() => {}}/> );
       const actualTitle = wrapper.find('h3').text();
@@ -31,12 +31,22 @@ if (Meteor.isClient) {
 
     it('should handleLogout on click', function() {
       const spy = expect.createSpy();
-      const wrapper = mount( <PrivateHeader title="Test title" handleLogout={ spy }/> )
+      const wrapper = mount( <PrivateHeader title="Test title" handleLogout={ spy } testComment={spy("Hello world")}/> )
       // simulate() simulates a 'click' on the button element specified in the .find() function
       wrapper.find('button').simulate('click');
 
       expect(spy).toHaveBeenCalled(); // the tohavebeencalled() takes no arg and only checks to see if spy was called or not
     })
+
+    // Dummy test below
+    // it('should render dummy text', function() {
+    //   const spy = expect.createSpy();
+    //   const wrapper = mount( <PrivateHeader title="Test title" handleLogout={ spy } testComment={spy("Hello world")}/> )
+    //   // simulate() simulates a 'click' on the button element specified in the .find() function
+    //   const dummyText = wrapper.find('h4').text();
+
+    //   expect(spy).toHaveBeenCalledWith("Hello world"); // the tohavebeencalled() takes no arg and only checks to see if spy was called or not
+    // })
 
   });
 }
