@@ -50,62 +50,62 @@ if (Meteor.isServer) {
       }).toThrow();
     });
 
-    it('should update note', function () {
-      const title = 'This is an updated title';
+    // it('should update note', function () {
+    //   const title = 'This is an updated title';
 
-      Meteor.server.method_handlers['notes.update'].apply({
-        userId: noteOne.userId
-      }, [
-        noteOne._id,
-        { title }
-      ]);
+    //   Meteor.server.method_handlers['notes.update'].apply({
+    //     userId: noteOne.userId
+    //   }, [
+    //     noteOne._id,
+    //     { title }
+    //   ]);
 
-      const note = Notes.findOne(noteOne._id);
+    //   const note = Notes.findOne(noteOne._id);
 
-      expect(note.updatedAt).toBeGreaterThan(0);
-      expect(note).toInclude({
-        title,
-        body: noteOne.body
-      });
-    });
+    //   expect(note.updatedAt).toBeGreaterThan(0);
+    //   expect(note).toInclude({
+    //     title,
+    //     body: noteOne.body
+    //   });
+    // });
 
-    it('should throw error if extra updates provided', function () {
-      expect(() => {
-        Meteor.server.method_handlers['notes.update'].apply({
-          userId: noteOne.userId
-        }, [
-          noteOne._id,
-          { title: 'new title', name: 'Andrew' }
-        ]);
-      }).toThrow();
-    });
+    // it('should throw error if extra updates provided', function () {
+    //   expect(() => {
+    //     Meteor.server.method_handlers['notes.update'].apply({
+    //       userId: noteOne.userId
+    //     }, [
+    //       noteOne._id,
+    //       { title: 'new title', name: 'Andrew' }
+    //     ]);
+    //   }).toThrow();
+    // });
 
-    it('should not update note if user was not creator', function () {
-      const title = 'This is an updated title';
+    // it('should not update note if user was not creator', function () {
+    //   const title = 'This is an updated title';
 
-      Meteor.server.method_handlers['notes.update'].apply({
-        userId: 'testid'
-      }, [
-        noteOne._id,
-        { title }
-      ]);
+    //   Meteor.server.method_handlers['notes.update'].apply({
+    //     userId: 'testid'
+    //   }, [
+    //     noteOne._id,
+    //     { title }
+    //   ]);
 
-      const note = Notes.findOne(noteOne._id);
+    //   const note = Notes.findOne(noteOne._id);
 
-      expect(note).toInclude(noteOne);
-    });
+    //   expect(note).toInclude(noteOne);
+    // });
 
-    it('should not update note if unauthenticated', function () {
-      expect(() => {
-        Meteor.server.method_handlers['notes.update'].apply({}, [noteOne._id]);
-      }).toThrow();
-    });
+    // it('should not update note if unauthenticated', function () {
+    //   expect(() => {
+    //     Meteor.server.method_handlers['notes.update'].apply({}, [noteOne._id]);
+    //   }).toThrow();
+    // });
 
-    it('should not update note if invalid _id', function () {
-      expect(() => {
-        Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId});
-      }).toThrow();
-    });
+    // it('should not update note if invalid _id', function () {
+    //   expect(() => {
+    //     Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId});
+    //   }).toThrow();
+    // });
 
   });
 }

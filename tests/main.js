@@ -1,8 +1,9 @@
 import assert from "assert";
 import './imports/api/users.test.js';
 import './imports/api/notes.test.js';
+import './imports/ui/PrivateHeader.test.js';
 
-describe("short-lnk", function () {
+describe("Notes App", function () {
 
   if (Meteor.isClient) {
     it("client is not server", function () {
@@ -16,3 +17,7 @@ describe("short-lnk", function () {
     });
   }
 });
+
+
+
+
