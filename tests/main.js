@@ -2,6 +2,7 @@ import assert from "assert";
 import './imports/api/users.test.js';
 import './imports/api/notes.test.js';
 import './imports/ui/PrivateHeader.test.js';
+import './imports/ui/Login.test.js';
 
 describe("Notes App", function () {
 
