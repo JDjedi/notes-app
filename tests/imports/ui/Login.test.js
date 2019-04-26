@@ -44,7 +44,6 @@ if (Meteor.isClient) {
 		// will not work below, guess ill just use jest instead of expect
 
 		// it("Should set loginWithPassword callback errors", function() {
-
 		// 	const spy = expect.createSpy();
 		// 	const wrapper = mount(
 		// 	   <MemoryRouter initialEntries={['/']} initialIndex={0}>
@@ -53,8 +52,8 @@ if (Meteor.isClient) {
 		// 	);
 
 		// 	wrapper.find('form').simulate('submit');
-		// 	console.log(spy.calls[0].arguments[2]({error: 'error'}));
-		// 	expect(wrapper.state('error').length).toNotBe(0);
+		// 	spy.calls[0].arguments[2]({});
+		// 	expect(wrapper.state(error).length).toNotBe(0);
 		// });
 	});
 }

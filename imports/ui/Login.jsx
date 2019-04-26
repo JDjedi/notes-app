@@ -19,8 +19,8 @@ export class Login extends React.Component {
 		let email = this.refs.email.value.trim(); 
 		let password = this.refs.password.value.trim();
 
-		this.props.loginWithPassword({email}, password, (error) => {
-			if (error) {
+		this.props.loginWithPassword({email}, password, (err) => {
+			if (err) {
 				this.setState({error: "Unable to login, check email and or password."})
 			} else {
 				this.setState({error: ''})
@@ -34,7 +34,7 @@ export class Login extends React.Component {
 				<div className="boxed-view__box">
 					<h1>Login</h1>
 
-					{this.state.error && <p>{this.state.error}</p>} 
+					{this.state.error ? <p>{this.state.error}</p> : undefined} 
 
 					<form className="form" onSubmit={this.handleSubmit.bind(this)} noValidate className="boxed-view__form">
 						<input type="email" ref="email" name="email" placeholder="Email"/> 
