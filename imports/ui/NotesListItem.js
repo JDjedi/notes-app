@@ -5,7 +5,7 @@ const NoteListItem = (props) => {
 	return (
 		<div>
 			<h5>{ props.note.title || "Untitled note" }</h5>
-			<p> { props.note.updatedAt } </p>
+			{/*<p> { props.note.updatedAt } </p> */}
 		</div>
 	);
 };

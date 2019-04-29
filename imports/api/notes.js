@@ -25,6 +25,14 @@ Meteor.methods({
 		})
 	},
 
+	'notes.removeAll'() {
+		if (!this.userId) {
+			throw new Meteor.Error('not-authorized')
+		}
+
+		Notes.remove({})
+	},
+
 
 	'notes.remove'(_id) {
 		if (!this.userId) {
