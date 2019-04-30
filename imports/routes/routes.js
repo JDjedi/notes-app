@@ -46,6 +46,8 @@ export const routes = (
         <Switch>
             <Route exact path="/" component={Login} render={() => onEnterPublicPage(Login)} />
             <Route exact path="/dashboard" component={Dashboard} render={() => onEnterPublicPage(Login)} />
+            {/* below is how we route and rig the page to upload the proper id when we click on it*/}
+            <Route exact path="/dashboard/:id" component={Dashboard} render={() => onEnterPublicPage(Login)} />
             <Route exact path="/signup" component={Signup} render={() => onEnterPublicPage(Signup)} />
             <Route exact path="/login" component={Login} render={() =>  onEnterPrivatePage(Dashboard)} />
             <Route exact path="*" component={Notfound} />
