@@ -9,6 +9,7 @@ import Notfound from '../ui/NotFound';
 import Login from '../ui/Login';
 
 const history = createBrowserHistory();
+const location = history.location;
 const unAuthenticatedPages = ['/signup', '/', '*', '/login'];
 const authenticatedPages = ['/dashboard']
 
@@ -26,6 +27,14 @@ const onEnterPrivatePage = (Component) => {
         return <Redirect to="/login" />
     } else {
         return <Component />
+    }
+}
+
+const onEnterNotePage = (location) => {
+    if (!Meteor.userId()) {
+        return <Redirect to="/" />
+    } else {
+        console.log(location.pathname)
     }
 }
 
@@ -47,7 +56,7 @@ export const routes = (
             <Route exact path="/" component={Login} render={() => onEnterPublicPage(Login)} />
             <Route exact path="/dashboard" component={Dashboard} render={() => onEnterPublicPage(Login)} />
             {/* below is how we route and rig the page to upload the proper id when we click on it*/}
-            <Route exact path="/dashboard/:id" component={Dashboard} render={() => onEnterPublicPage(Login)} />
+            <Route exact path="/dashboard/:id" component={Dashboard} render={() => onEnterNotePage(Login)} />
             <Route exact path="/signup" component={Signup} render={() => onEnterPublicPage(Signup)} />
             <Route exact path="/login" component={Login} render={() =>  onEnterPrivatePage(Dashboard)} />
             <Route exact path="*" component={Notfound} />
