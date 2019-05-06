@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { Router, Switch, Route, Redirect } from 'react-router-dom'; // react router syntax below v4! 
 import { createBrowserHistory } from 'history';
+import { Session } from 'meteor/session'
 
 import Signup from '../ui/Signup';
 import Dashboard from '../ui/Dashboard';
@@ -30,11 +31,11 @@ const onEnterPrivatePage = (Component) => {
     }
 }
 
-const onEnterNotePage = (location) => {
+const onEnterNotePage = (Component, location) => {
     if (!Meteor.userId()) {
         return <Redirect to="/" />
     } else {
-        console.log(location.pathname)
+        Session.set('selectedNoteId', location.pathname)
     }
 }
 
@@ -56,7 +57,7 @@ export const routes = (
             <Route exact path="/" component={Login} render={() => onEnterPublicPage(Login)} />
             <Route exact path="/dashboard" component={Dashboard} render={() => onEnterPublicPage(Login)} />
             {/* below is how we route and rig the page to upload the proper id when we click on it*/}
-            <Route exact path="/dashboard/:id" component={Dashboard} render={() => onEnterNotePage(Login)} />
+            <Route exact path="/dashboard/:id" component={Dashboard} render={() => onEnterNotePage(Dashboard, location)} />
             <Route exact path="/signup" component={Signup} render={() => onEnterPublicPage(Signup)} />
             <Route exact path="/login" component={Login} render={() =>  onEnterPrivatePage(Dashboard)} />
             <Route exact path="*" component={Notfound} />

@@ -9,7 +9,9 @@ export default () => {
 		<div>
 			<PrivateHeader title="Dashboard"/>
 			<div className="page-content">
+				{console.log(location.pathname)}
 				<NoteList />
+
 			</div>
 		</div>
 	)
