@@ -51,15 +51,24 @@ export const onAuthChange = (isAuthenticated) => {
     }
 }
 
+export const globalOnChange = () => {
+    console.log('globalOnChange');
+}
+
+export const globalOnEnter = () => {
+    console.log('globalOnEnter');
+
+}
+
 export const routes = ( 
     <Router history={history}>
         <Switch>
-            <Route exact path="/" component={Login} render={() => onEnterPublicPage(Login)} />
-            <Route exact path="/dashboard" component={Dashboard} render={() => onEnterPublicPage(Login)} />
+            <Route exact path="/" component={Login} privacy="unauth" render={() => onEnterPublicPage(Login)} />
+            <Route exact path="/dashboard" component={Dashboard} privacy="auth" render={() => onEnterPublicPage(Login)} />
             {/* below is how we route and rig the page to upload the proper id when we click on it*/}
-            <Route exact path="/dashboard/:id" component={Dashboard} render={() => onEnterNotePage(Dashboard, location)} />
-            <Route exact path="/signup" component={Signup} render={() => onEnterPublicPage(Signup)} />
-            <Route exact path="/login" component={Login} render={() =>  onEnterPrivatePage(Dashboard)} />
+            <Route exact path="/dashboard/:id" component={Dashboard} privacy="auth" render={() => onEnterNotePage(Dashboard, location)} />
+            <Route exact path="/signup" component={Signup} privacy="unauth" render={() => onEnterPublicPage(Signup)} />
+            <Route exact path="/login" component={Login} privacy="unauth" render={() =>  onEnterPrivatePage(Dashboard)} />
             <Route exact path="*" component={Notfound} />
         </Switch>
     </Router>
