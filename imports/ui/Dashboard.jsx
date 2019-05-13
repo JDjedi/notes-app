@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor'
 
 import PrivateHeader from './PrivateHeader';
 import NoteList from './NoteList';
-import { Editor } from './Editor';
+import Editor from './Editor';
 
 export default () => {
 	return(

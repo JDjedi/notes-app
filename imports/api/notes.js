@@ -65,17 +65,18 @@ Meteor.methods({
 				optional: true
 			}
 		}).validate({
-			_id: _id,
+			_id,
 			...updates
 		});
 
-		Notes.update(_id, {
-			_id: _id,
-			userId: this.userId,
+		Notes.update({
+			_id,
+			userId: this.userId
+		}, {
 			$set: {
 				updatedAt: new Date().getTime(),
 				...updates
-			}
+			}	
 		})
 	}
 })
