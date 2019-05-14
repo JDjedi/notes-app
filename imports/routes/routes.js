@@ -1,79 +1,31 @@
+
+
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { Router, Switch, Route, Redirect } from 'react-router-dom'; // react router syntax below v4! 
+import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { createBrowserHistory } from 'history';
-import { Session } from 'meteor/session'
+import { Session } from 'meteor/session';
 
+import PrivateRoute from './privateRoute';
+import PublicRoute from './publicRoute';
 import Signup from '../ui/Signup';
 import Dashboard from '../ui/Dashboard';
-import Notfound from '../ui/NotFound';
+import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
 
-const history = createBrowserHistory();
-const location = history.location;
-const unAuthenticatedPages = ['/signup', '/', '*', '/login'];
-const authenticatedPages = ['/dashboard']
+export const history = createBrowserHistory();
 
-
-const onEnterPublicPage = (Component) => {
-    if (Meteor.userId()) {
-        return <Redirect to="/dashboard" />
-    } else {
-        return <Component />
-    }
-}
-
-const onEnterPrivatePage = (Component) => {
-    if (!Meteor.userId()) {
-        return <Redirect to="/login" />
-    } else {
-        return <Component />
-    }
-}
-
-const onEnterNotePage = (Component, location) => {
-    if (!Meteor.userId()) {
-        return <Redirect to="/" />
-    } else {
-        Session.set('selectedNoteId', location.pathname)
-    }
-}
-
-export const onAuthChange = (isAuthenticated) => {
-    const pathname = history.location.pathname;
-    const isUnauthenticatedPage = unAuthenticatedPages.includes(pathname);
-    const isAuthenticatedPage = authenticatedPages.includes(pathname);
-
-    if (isUnauthenticatedPage && isAuthenticated) {
-        history.push('/dashboard')
-    } else if (isAuthenticatedPage && !isAuthenticated) {
-        history.push('/login')
-    }
-}
-
-export const globalOnChange = () => {
-    console.log('globalOnChange');
-}
-
-export const globalOnEnter = () => {
-    console.log('globalOnEnter');
-
-}
-
-export const routes = ( 
-    <Router history={history}>
-        <Switch>
-            <Route exact path="/" component={Login} privacy="unauth" render={() => onEnterPublicPage(Login)} />
-            <Route exact path="/dashboard" component={Dashboard} privacy="auth" render={() => onEnterPublicPage(Login)} />
-            {/* below is how we route and rig the page to upload the proper id when we click on it*/}
-            <Route exact path="/dashboard/:id" component={Dashboard} privacy="auth" render={() => onEnterNotePage(Dashboard, location)} />
-            <Route exact path="/signup" component={Signup} privacy="unauth" render={() => onEnterPublicPage(Signup)} />
-            <Route exact path="/login" component={Login} privacy="unauth" render={() =>  onEnterPrivatePage(Dashboard)} />
-            <Route exact path="*" component={Notfound} />
-        </Switch>
-    </Router>
+export const routes = (
+  <Router history={history}>
+    <Switch>
+      <PublicRoute path="/" component={Login} exact={true} />
+      <PublicRoute path="/signup" component={Signup} />
+      <PrivateRoute path="/dashboard" component={Dashboard} exact={true} />
+      <PrivateRoute path="/dashboard/:id" component={Dashboard} />
+      <Route path="*" component={NotFound} />
+    </Switch>
+  </Router>
 );
-
 
 
 

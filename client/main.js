@@ -4,7 +4,7 @@ import { Tracker } from 'meteor/tracker';
 import { Session } from 'meteor/session';
 import { createBrowserHistory } from 'history';
 
-import { routes, onAuthChange } from '../imports/routes/routes'
+import { routes } from '../imports/routes/routes'
 import '../imports/startup/simple-schema-config.js';
 
 const history = createBrowserHistory();
@@ -12,7 +12,7 @@ const history = createBrowserHistory();
 // track status of what you want it to track and acts or reacts on it
 Tracker.autorun(() => { 
 	const isAuthenticated = !!Meteor.userId();  // !! takes a falsy or truthy value and makes it a real true or false, boolean
-	onAuthChange(isAuthenticated)
+	//onAuthChange(isAuthenticated)
 })
 
 Tracker.autorun(() => {
