@@ -27,9 +27,9 @@ export default class NoteListEmptyItem extends React.Component{
 	onClick(e) {
 		e.preventDefault()
 		Meteor.call('notes.removeAll', (err, res) => {
-			// if (err) {
-			// 	this.setState({error: err.reason})
-			// }
+			if (err) {
+				this.setState({error: err.reason})
+			}
 		})
 	}
 
