@@ -27,14 +27,14 @@ export default class NoteListEmptyItem extends React.Component{
 	onClick(e) {
 		e.preventDefault()
 		Meteor.call('notes.removeAll', (err, res) => {
-			if (err) {
-				this.setState({error: err.reason})
-			}
+			// if (err) {
+			// 	this.setState({error: err.reason})
+			// }
 		})
 	}
 
-	noNotesMessage(notes_length) {
-		if (notes_length === 0) {
+	noNotesMessage() {
+		if (this.state.notes.length === 0) {
 				return(<div><p>There are currently no notes</p> </div>)
 		}
 	}
@@ -45,8 +45,7 @@ export default class NoteListEmptyItem extends React.Component{
 				
 				<button onClick={this.onClick.bind(this)}>Clear Notes</button>
 				{ this.state.error ? <p>{this.state.error}</p> : undefined}
-				{console.log(this.state.notes.length)}
-				{this.noNotesMessage(this.state.notes.length)}
+				{ this.noNotesMessage() }
 			</div>
 		)
 	}
