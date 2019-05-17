@@ -3,6 +3,7 @@ import './imports/api/users.test.js';
 import './imports/api/notes.test.js';
 import './imports/ui/PrivateHeader.test.js';
 import './imports/ui/Login.test.js';
+import './imports/ui/Editor.test.js';
 //import './imports/ui/NoteListEmptyItem.test.js';
 
 describe("Notes App", function () {

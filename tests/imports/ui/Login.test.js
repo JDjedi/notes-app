@@ -1,10 +1,10 @@
 
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
 import expect from 'expect';
 import { mount } from 'enzyme';
 import { shallow } from 'enzyme';
+import { MemoryRouter } from 'react-router-dom';
 
 import { Login } from '../../../imports/ui/Login';
 

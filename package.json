@@ -34,6 +34,7 @@
     "enzyme": "^2.7.1",
     "expect": "^1.20.2",
     "react-addons-test-utils": "^15.6.2",
+    "react-router-enzyme-context": "^1.2.0",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }

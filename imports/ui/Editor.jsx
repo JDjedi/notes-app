@@ -4,10 +4,9 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Session } from 'meteor/session'
 import PropTypes from 'prop-types';
 import { createBrowserHistory } from 'history';
+import { createMemoryHistory } from 'history/createMemoryHistory';
 
 import { Notes } from '../api/notes';
-
-export const history = createBrowserHistory();
 
 export class Editor extends React.Component {
 
@@ -17,6 +16,12 @@ export class Editor extends React.Component {
 			title: '',
 			body: ''
 		};
+
+	    if (process.env.NODE_ENV==='test') {
+	   		const history = createMemoryHistory();
+	    } else {
+	    	const history = createBrowserHistory();
+	    }
 	}
 
 	handleBodyChange(e) {
@@ -99,3 +104,7 @@ export default createContainer(() => {
 		history
 	}
 }, Editor);
+
+
+
+
