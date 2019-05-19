@@ -101,7 +101,7 @@ export default createContainer(() => {
 		selectedNoteId: selectedNoteId,
 		note: Notes.findOne(selectedNoteId),
 		call: Meteor.call,
-		history
+		history: history
 	}
 }, Editor);
 
