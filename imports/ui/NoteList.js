@@ -34,7 +34,9 @@ export default createContainer(() => {
 	const selectedNoteId = Session.get('selectedNoteId');
 
 	return {
-		notes: Notes.find().fetch().map((note) => {
+		notes: Notes.find({}, {
+				sort: {updatedAt: -1} // most recent sort
+			}).fetch().map((note) => {
 			return {
 				...note,
 				selected: note._id === selectedNoteId
