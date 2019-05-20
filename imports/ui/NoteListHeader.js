@@ -13,7 +13,7 @@ export const NoteListHeader = (props) => {
 		<div>
 			<button onClick={() => {props.meteorCall('notes.insert', (err, res) => {
 					if (res) {
-						props.Session.set('selectedNoteId', res);
+						props.Session.set('selectedNoteId', res); // refreshes note id to newly made note
 					}
 				});
 			}}>New Note</button>
