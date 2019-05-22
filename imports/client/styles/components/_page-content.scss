@@ -1,6 +1,20 @@
 .page-content {
-	max-width: 50rem;
-	margin: 0px auto 0px auto;
-	padding: $space;
-
+	display: flex;
+	height: $page-content-height;
+  	margin: 0 auto;
+  	max-width: $site-max-width;
+  	padding: $space;
 }
+
+.page-content__sidebar {
+	display: flex;
+	width: $page-content-sidebar-width;
+}
+
+.page-content__main {
+	display: flex;
+	width: $page-content-main-width;
+}
+
+
+

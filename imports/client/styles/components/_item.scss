@@ -1,21 +1,26 @@
+
+
 .item {
-	background-color: $item-bg;
-	border: 1px solid $item-border;
-	margin-bottom: $space;
-	padding: $space;
+  background: $item-bg;
+  border: 1px solid $item-border;
+  margin-bottom: $space;
+  padding: $space;
+}
+
+.item-list {
+	background-color: white;
+	border: 1px solid $grey;
+	overflow-y: scroll; // when there is more content than can fit this will allow for a scroll bsr to appear
+	width: 100%;
 }
 
 .item__message {
-	color: $item-text-color;
+  color: $item-text-color;
 }
 
 .item__status-message {
-	color: $item-text-color;
-	font-style: italic;
-	text-align: center;
-	margin: 0;
+  color: $item-text-color;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
 }
-
-
-
-

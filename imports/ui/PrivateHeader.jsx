@@ -26,11 +26,10 @@ import PropTypes from 'prop-types';
 export const PrivateHeader = (props) => {
 	return(
 		<div className="header">
-			<div className="wrapper">
-				<h3>{props.title}</h3>
-				<h4>{props.testComment}</h4>
-				<button className="button button--header" onClick={() => { props.handleLogout() }}>Logout</button>
-			</div>
+			<div className="header__content">
+				<h1>{props.title}</h1>
+				<h4><button className="button button--header" onClick={() => { props.handleLogout() }}>Logout</button></h4>
+				</div>
 		</div>
 	)
 };

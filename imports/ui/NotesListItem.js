@@ -11,7 +11,7 @@ export const NoteListItem = (props) => {
 			props.Session.set('selectedNoteId', props.note._id);
 		}}>
 			<h5>{ props.note.title || "Untitled note" }</h5>
-			{ props.note.selected ? /*props.note.body*/ "***" : undefined }
+			{ props.note.selected ? /*props.note.body*/ "selected" : undefined }
 		</div>
 	);
 };

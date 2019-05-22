@@ -1,46 +1,29 @@
-// BEM - Block, Element, modifier
-// always use classes!!
-
-// Block
-// .item { 
-// }
-
-// Modifer
-// .item--last-item {
-// }
-
-// Element
-// .item__message { // the double underscore is just a naming convention!
-// }
-
 .boxed-view {
-	align-items: center;
-	background: $boxed-view-overlay-bg; // ref in the _variables file!
-	display: flex;
-	justify-content: center;
-	height: 100vh; // 100% of total height of the viewport, this makes the page view dynamic
-	width: 100vw; // vw = viewport width, and height is vice versa
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .boxed-view--modal {
-	background: fade-out($boxed-view-overlay-bg, .3); // scss function! look ut up
-	position: fixed;
-	right: 0;
-	left: 0;
-	top: 0;
-	bottom: 0;
+  background: fade-out($boxed-view-overlay-bg, .3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .boxed-view__box {
-	background-color: $boxed-view-bg;
-	padding: 2.4rem;
-	text-align: center;
-	width: 24rem;
+  background-color: $boxed-view-bg;
+  border: 1px solid $boxed-view-border-color;
+  padding: 2.4rem;
+  text-align: center;
+  width: 24rem;
 }
 
 .boxed-view__form {
-	display: flex; // default direction is left to right
-	flex-direction: column; // sets flex direction to how you want it, 4 deff selection choices
+  display: flex;
+  flex-direction: column;
 }
-
-

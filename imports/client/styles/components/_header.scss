@@ -1,11 +1,17 @@
 .header {
-	background: $header-color;
-	color: #ffffff;
-	margin-bottom: 1.5rem;
+  background: $header-bg;
+  color: $header-color;
 }
 
-.header__subtitle {
-	font-size: 1.3rem;
-	font-weight: 400;
+.header__content {
+  display: flex;
+  height: $header-height;
+  justify-content: space-between;
+  max-width: $site-max-width;
+  margin: 0 auto;
+  padding: $space;
 }
 
+.header__title {
+  margin: 0;
+}

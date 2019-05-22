@@ -12,14 +12,14 @@ import { Notes } from '../api/notes';
 export const NoteList = (props) => {
 
 	return (
-		<div>
-			{/* NoteList - {props.notes.length} */}
+		<div className="item-list">
 			<NoteListHeader />
-			<NoteListEmptyItem />
+			
 			{props.notes.map((note)=> {
 				return <NoteListItem key={note._id} note={note}/>;
 			})}
-
+			
+			<NoteListEmptyItem />
 		</div>
 	)
 }
