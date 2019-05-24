@@ -3,8 +3,6 @@ import React from 'react';
 
 import { Notes } from '../api/notes';
 
-
-
 export default class NoteListEmptyItem extends React.Component{
 
 	constructor(props) {
@@ -35,15 +33,14 @@ export default class NoteListEmptyItem extends React.Component{
 
 	noNotesMessage() {
 		if (this.state.notes.length === 0) {
-				return(<div><p>There are currently no notes</p> </div>)
+				return(<p className="empty-item">There are currently no notes</p>)
 		}
 	}
 
 	render() {
 		return (
-			<div>
-				
-				<button onClick={this.onClick.bind(this)}>Clear Notes</button>
+			<div className="item-list__header">
+				<button className="button" onClick={this.onClick.bind(this)}>Clear Notes</button>
 				{ this.state.error ? <p>{this.state.error}</p> : undefined}
 				{ this.noNotesMessage() }
 			</div>

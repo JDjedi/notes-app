@@ -1,10 +1,19 @@
 
-
 .item {
-  background: $item-bg;
-  border: 1px solid $item-border;
-  margin-bottom: $space;
+  border-left: $item-border-width solid transparent; // this gets rid of the mouse over that moves the text on mouse hover
+  cursor: pointer; // makes pointy hand sign when mouse over element
   padding: $space;
+  transition: background-color .4s ease, border-left .4s ease; // this allows for the highlighted transition to ease as mouse over 
+}
+
+.item:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width solid $grey; // this causes the border to appear on mouse hover over
+}
+
+.item--selected, .item--selected:hover {
+  background-color: $light-grey;
+  border-left: $item-border-width soild $brand-primary
 }
 
 .item-list {
@@ -14,13 +23,26 @@
 	width: 100%;
 }
 
-.item__message {
-  color: $item-text-color;
+.item-list__header {
+  display: flex;
+  flex-direction: column;
+  padding: $space;
 }
 
-.item__status-message {
-  color: $item-text-color;
-  font-style: italic;
-  text-align: center;
-  margin: 0;
+.item__title {
+  font-weight: normal;
+  font-size: $base-font-size;
+  margin-bottom:  .4rem;
 }
+
+.item--selected .item__title {
+  font-weight: bold;
+}
+
+// Empty item 
+.empty-item {
+  font-style: italic;
+  padding: $space;
+  text-align: center;
+}
+

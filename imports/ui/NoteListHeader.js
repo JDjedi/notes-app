@@ -4,14 +4,11 @@ import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Session } from 'meteor/session'
 
-
-
-
 export const NoteListHeader = (props) => {
 
 	return (
-		<div>
-			<button onClick={() => {props.meteorCall('notes.insert', (err, res) => {
+		<div className="item-list__header">
+			<button className="button" onClick={() => {props.meteorCall('notes.insert', (err, res) => {
 					if (res) {
 						props.Session.set('selectedNoteId', res); // refreshes note id to newly made note
 					}
@@ -20,8 +17,6 @@ export const NoteListHeader = (props) => {
 		</div>
 	)
 }
-
-
 
 // keys defined in the object below become props for the component passed in, in this case the NoteList component
 export default createContainer(() => {
