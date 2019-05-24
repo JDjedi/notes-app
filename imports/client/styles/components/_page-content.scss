@@ -1,20 +1,40 @@
 .page-content {
+
 	display: flex;
 	height: $page-content-height;
   	margin: 0 auto;
   	max-width: $site-max-width;
-  	padding: $large-space $space;
+
+  	@media (min-width: 50rem) {
+	  	padding: $large-space $space;
+  	}
 }
 
-.page-content__sidebar {
-	display: flex;
+.page-content__sidebar { // hides sidebar when screen width reaches 50rem
+	display: none;
 	padding-right: $large-space;
 	width: $page-content-sidebar-width;
+
+	@media (min-width: 50rem) {
+		display: flex;
+	}
 }
+
+
+// @media (max-width: 50rem) { // @media example
+// 	.page-content__sidebar * {
+// 		color: red;
+// 	}
+// }
 
 .page-content__main {
 	display: flex;
-	width: $page-content-main-width;
+	width: 100%;
+	
+
+	@media (min-width: 50rem) {
+		width: $page-content-main-width;
+	}
 }
 
 
