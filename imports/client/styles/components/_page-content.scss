@@ -1,24 +1,3 @@
-.page-content {
-
-	display: flex;
-	height: $page-content-height;
-  	margin: 0 auto;
-  	max-width: $site-max-width;
-
-  	@media (min-width: 50rem) {
-	  	padding: $large-space $space;
-  	}
-}
-
-.page-content__sidebar { // hides sidebar when screen width reaches 50rem
-	display: none;
-	padding-right: $large-space;
-	width: $page-content-sidebar-width;
-
-	@media (min-width: 50rem) {
-		display: flex;
-	}
-}
 
 
 // @media (max-width: 50rem) { // @media example
@@ -27,12 +6,38 @@
 // 	}
 // }
 
+
+.page-content {
+	display: flex;
+	height: $page-content-height;
+  	margin: 0 auto;
+  	max-width: $site-max-width;
+	// @include funkyBackground(#333333)
+	@include desktop() {
+		padding: $large-space $space;
+	}
+}
+
+.page-content__sidebar { // hides sidebar when screen width reaches 50rem
+	display: none;
+	padding-right: $large-space;
+	width: $page-content-sidebar-width;
+
+	@include desktop() {
+		display: flex;
+	}
+}
+
+
 .page-content__main {
 	display: flex;
 	width: 100%;
-	
 
-	@media (min-width: 50rem) {
+	// @include funkyBorder(15px) {	// mixin is called here
+	// 	color: green;				// this is use above in @content and passed into the function
+	// }; 
+
+	@include desktop() {
 		width: $page-content-main-width;
 	}
 }

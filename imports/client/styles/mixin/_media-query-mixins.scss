@@ -1,0 +1,18 @@
+
+@mixin desktop() {
+	@media (min-width: 50rem) {
+		@content;
+	}
+}
+
+@mixin funkyBackground($backgroundColor: green) {
+	background-color: $backgroundColor;
+}
+
+@mixin funkyBorder($borderSize) { // this is a mixin
+	border: $borderSize solid orange;
+
+	* {
+		@content; // renders the content defined in her from without, @content === color:green; down below
+	}
+}
