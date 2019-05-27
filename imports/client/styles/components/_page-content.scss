@@ -19,15 +19,25 @@
 }
 
 .page-content__sidebar { // hides sidebar when screen width reaches 50rem
-	display: none;
-	padding-right: $large-space;
-	width: $page-content-sidebar-width;
+	display: flex;
+	transition: left .3s ease;	// this will allow for the transition of the side bar
+	position: fixed;
+	top: $header-height;
+	left: -100vw;
+	bottom: 0;
+	width: 100vw;
 
 	@include desktop() {
 		display: flex;
+		padding-right: $large-space;
+		position: static;
+		width: $page-content-sidebar-width;
 	}
 }
 
+.isNavOpenToggle .page-content__sidebar { // this means that if 'is-nav-open' exists then '.page-con...' will render
+	left: 0; // this is where the side bar shifts and re shifts back into view upon the button click
+}
 
 .page-content__main {
 	display: flex;

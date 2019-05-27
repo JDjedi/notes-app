@@ -22,6 +22,7 @@ Tracker.autorun(() => {
 
 	if (selectedNoteId) {
 		history.replace(`/dashboard/${selectedNoteId}`)
+		Session.set('isNavOpen', false);
 	}
 })
 
