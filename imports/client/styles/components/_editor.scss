@@ -22,7 +22,8 @@
 	margin-bottom: $large-space;
 	outline: none;
 	padding: $input-spacing;
-	resize: none; // gets rid of manually resize elementx
+	resize: none; // gets rid of manually resize element
+	-webkit-overflow-scrolling: touch; // this is the momentum scrolling style
 }
 
 .editor__message {

@@ -44,5 +44,7 @@
   font-style: italic;
   padding: $space;
   text-align: center;
+  width: 100%;
+  -webkit-overflow-scrolling: touch; // this is the momentum scrolling style
 }
 
